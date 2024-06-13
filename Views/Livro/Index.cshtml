@@ -1,0 +1,83 @@
+﻿@model IEnumerable<AT_SQL.Models.Livro>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="text-center">
+    <img src="./logo_at_sql.jpg" width="200em" height="200em" />
+
+    <p>
+        <a asp-action="Create"><btn class="btn btn-outline-primary" style="margin-top:7px">Inserir Resenha</btn></a>
+    </p>
+    <hr />
+    <form asp-controller="Livro" asp-action="Index">
+        <p>
+            <input type="text" name="procuraLivro" />
+            <input type="submit" value="Buscar Livro" class="btn btn-outline-info" style="margin-left:5px" />
+        </p>
+    </form>
+    @try
+    {
+
+        <table class="table">
+            @if (Model != null)
+            {
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Capa)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NomeLivro)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NomeUsuario)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.EmailUsuario)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Resenha)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+            }
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <img src="@Html.DisplayFor(modelItem => item.Capa)" width="50em" height="50em" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomeLivro)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomeUsuario)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmailUsuario)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Resenha)
+                        </td>
+                        <td>
+                            <!--<a asp-action="Edit" asp-route-id="@item.ID">Edit</a>-->
+                            <a asp-action="Details" asp-route-id="@item.ID"><btn class="btn btn-outline-primary" >Detalhes</btn></a> |
+                            <!--<a asp-action="Delete" asp-route-id="@item.ID">Delete</a>-->
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    catch (Exception ex)
+    {
+        <span>Tente buscar ou insira uma resenha</span>
+        <table class="table" hidden></table>
+    }
+
+</div>
