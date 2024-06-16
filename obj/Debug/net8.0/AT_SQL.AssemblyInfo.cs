@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AT_SQL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ba6ff2a72dfc8d3e31fc02894350a81f19cccb9e")]
 [assembly: System.Reflection.AssemblyProductAttribute("AT_SQL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AT_SQL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

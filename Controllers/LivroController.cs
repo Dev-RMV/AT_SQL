@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AT_SQL.Data;
 using AT_SQL.Models;
+using System.Text;
 
 namespace AT_SQL.Controllers
 {
@@ -41,7 +42,18 @@ namespace AT_SQL.Controllers
             var livros = from livro in _context.Livro select livro;
             if (procuraLivro.Trim()!= "")
             {
-                livros = livros.Where(s => s.NomeLivro.ToString().ToLower().Contains(procuraLivro.ToString().ToLower()));
+                string livroEncontrado="";
+                foreach (Livro livro in livros)
+                {
+                    if (livro.NomeLivro.Normalize(NormalizationForm.FormKC).ToLower().Contains(procuraLivro.Normalize(NormalizationForm.FormKC).ToLower()))
+                    {
+                        livroEncontrado = livro.NomeLivro;
+                    }
+
+                }
+
+
+                livros = livros.Where(s => s.NomeLivro.Contains(livroEncontrado));
                 return View(await livros.ToListAsync());
             }
 
